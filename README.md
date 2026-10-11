@@ -28,23 +28,56 @@ See [examples/example-output.md](examples/example-output.md).
 
 Summary, tasks, files, constraints, acceptance criteria, branch, and a report-back format.
 
-## Install
+## Install guide
 
-Project only:
+Requires [Claude Code](https://claude.com/claude-code) and `git`.
+
+### 1. Clone the repo
 
 ```bash
-mkdir -p .claude/skills
-cp -r .claude/skills/SessionHandoff /path/to/your/project/.claude/skills/
+git clone https://github.com/JasonPieterK/SessionHandoffSkill.git
+cd SessionHandoffSkill
 ```
 
-All projects:
+### 2. Copy the skill into Claude Code's skills folder
+
+**macOS**
+
+```bash
+mkdir -p ~/.claude/skills
+cp -R .claude/skills/SessionHandoff ~/.claude/skills/
+```
+
+**Linux**
 
 ```bash
 mkdir -p ~/.claude/skills
 cp -r .claude/skills/SessionHandoff ~/.claude/skills/
 ```
 
-Restart Claude Code, then run `/SessionHandoff`.
+**Windows (PowerShell)**
+
+```powershell
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force ".claude\skills\SessionHandoff" "$env:USERPROFILE\.claude\skills\"
+```
+
+**Windows (Command Prompt)**
+
+```bat
+mkdir "%USERPROFILE%\.claude\skills"
+xcopy /E /I /Y ".claude\skills\SessionHandoff" "%USERPROFILE%\.claude\skills\SessionHandoff"
+```
+
+This installs the skill for all your projects. To install it for one project only, copy the folder into that project's `.claude/skills/` instead.
+
+### 3. Restart Claude Code and check
+
+Restart Claude Code, then type `/SessionHandoff`. If it appears, you're done.
+
+### Update
+
+Run `git pull` in the cloned folder and repeat step 2.
 
 ## Usage
 
